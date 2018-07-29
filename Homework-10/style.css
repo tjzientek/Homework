@@ -1,0 +1,23 @@
+body {
+    background-color: #d1d1d1;
+}
+
+nav {
+    background-color: #ffffff;
+}
+
+nav a.navbar-brand {
+    background-color: dodgerblue;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #ffffff;
+    margin-left:30px;
+}
+
+.container {
+    background-color: #ffffff;
+}
+
+.color1 {
+    color: dodgerblue;
+}
