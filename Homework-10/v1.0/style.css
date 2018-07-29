@@ -14,7 +14,7 @@ nav a.navbar-brand {
     margin-left:30px;
 }
 
-.container {
+.column {
     background-color: #ffffff;
 }
 
@@ -22,3 +22,16 @@ nav a.navbar-brand {
     color: dodgerblue;
 }
 
+.center {
+    text-align: center;
+}
+
+.footer1 {
+    background-color: dodgerblue;
+    height: 5px;
+}
+
+.footer2 {
+    background-color: #555555;
+    height: 30px;
+}
