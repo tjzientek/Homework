@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+        <div class="text-center">
+            <div class="jumbotron">
+                <h1 class="display-3">Mission to Mars</h1>
+                <a href="/scrape" class="btn btn-primary">Scrape New Data</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Latest Mars News</h3>
+                <h5>{{ data.news_title }}</h5>
+                <p>{{ data.news_desc }}</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-8">
+                <h3>Featured Mars Image</h3>
+                <img src="{{ data.featured_image_url }}" alt="{{ data.featured_image_title }}" class="img-fluid" />
+            </div>
+
+            <div class="col-lg-4 m-0 p-0">
+                <div class="border border-dark p-3">
+                    
+                    <h4>Current Weather on Mars</h4>
+                    <p>{{ data.mars_weather }}</p>
+                </div>
+                <br>
+                <h4>Mars Facts</h4>
+                <div class="text-left">{{ data.mars_facts_table|safe }}</div>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <h3 class='text-center'>Mars Hemispheres</h3>
+            <div class="row">
+                <div class="col-lg-5 border border-dark p-1">
+                    <img src='{{ hemispheres[0].img_url }}' class="img-thumbnail"/><br>
+                    <figcaption class="figure-caption"><h5>{{ hemispheres[0].title }}</h5></figcaption>
+                </div>
+                <div class="col-lg-2">&nbsp;</div>
+                <div class="col-lg-5 border border-dark p-1">
+                    <img src='{{ hemispheres[1].img_url }}' class="img-thumbnail"/><br>
+                    <figcaption class="figure-caption"><h5>{{ hemispheres[1].title }}</h5></figcaption>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-5 border border-dark p-1">
+                    <img src='{{ hemispheres[2].img_url }}' class="img-thumbnail"/><br>
+                    <figcaption class="figure-caption"><h5>{{ hemispheres[2].title }}</h5></figcaption>
+                </div>
+                <div class="col-lg-2">&nbsp;</div>
+                <div class="col-lg-5 border border-dark p-1">
+                    <img src='{{ hemispheres[3].img_url }}' class="img-thumbnail"/><br>
+                    <figcaption class="figure-caption"><h5>{{ hemispheres[3].title }}</h5></figcaption>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
