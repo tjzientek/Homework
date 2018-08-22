@@ -97,5 +97,22 @@ def samples(sample):
     return jsonify(data)
 
 
+@app.route("/wfreq/<sample>")
+def wfreq(sample):
+    sel = [
+        Samples_Metadata.sample,
+        Samples_Metadata.WFREQ,
+    ]
+
+    results = db.session.query(*sel).filter(Samples_Metadata.sample == sample).all()
+
+    sample_wfreq = {}
+    for result in results:
+        sample_wfreq["sample"] = result[0]
+        sample_wfreq["WFREQ"] = result[1]
+
+    return jsonify(sample_wfreq)
+
+
 if __name__ == "__main__":
     app.run()
