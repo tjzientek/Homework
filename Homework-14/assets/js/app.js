@@ -1,9 +1,12 @@
 // @TODO: YOUR CODE HERE!
 
-var w = 700;
-var h = 500;
-var padding = 40;
 
+var padding = 60;
+var w = 900;
+var h = 600;
+var margin = {top: 20, right: 20, bottom: 50, left: 90};
+var wMargin = w - margin.left - margin.right;
+var hMargin = h - margin.top - margin.bottom;
 
 d3.csv("./assets/data/data.csv").then(function(data) {
        
@@ -14,12 +17,12 @@ d3.csv("./assets/data/data.csv").then(function(data) {
 
     var xScale = d3.scaleLinear()
         .domain([8, d3.max(data, function(d) { return d.poverty; })  +2])
-        .range([padding, w - padding * 2]);
+        .range([padding, wMargin - padding * 2]);
     
     
     var yScale = d3.scaleLinear()
         .domain([0, d3.max(data, function(d) { return d.healthcare; })])
-        .range([h - padding, padding]);
+        .range([hMargin - padding, padding]);
 
     var xAxis = d3.axisBottom().scale(xScale).ticks(7);
     var yAxis = d3.axisLeft().scale(yScale).ticks(10);
@@ -53,14 +56,29 @@ var svg = d3.select("#scatter")
 
     svg.append("g")
 			.attr("class", "x axis")	
-			.attr("transform", "translate(0," + (h - padding) + ")")
+			.attr("transform", "translate(0," + (hMargin - padding) + ")")
 			.call(xAxis);
-		
+        
+    svg.append("text")             
+        .attr("transform", "translate(" + (wMargin/2) + " ," + (hMargin - 10) + ")")
+        .style("text-anchor", "middle")
+        .text("In Poverty (%)")
+        .attr("font-size", "11px");
+
 		//y axis
-		svg.append("g")
-			.attr("class", "y axis")	
-			.attr("transform", "translate(" + padding + ", 0)")
-			.call(yAxis);
+	svg.append("g")
+	    .attr("class", "y axis")	
+		.attr("transform", "translate(" + padding + ", 0)")
+		.call(yAxis);
+
+    svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 5)
+        .attr("x",0 - (hMargin / 2))
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Lacks Healthcare (%)")
+        .attr("font-size", "11px");  
 
 });    
 
